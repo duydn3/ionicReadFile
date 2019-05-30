@@ -18,9 +18,9 @@ export class LogicService {
     return this.http.get<IData[]>(this.file.dataDirectory + this.fileName);
   }
 
-  async saveData(data: string) {
-    await this.platform.ready();
-    const d: IData = { id: 3, question: '3', img: '3'};
-    return this.file.writeFile(this.file.dataDirectory, this.fileName, JSON.stringify(d), {replace: true});
+  saveData(data: string) {
+    // tslint:disable-next-line:variable-name
+    const d: IData[] = [{ id: 3, question: '3', img: '3'}, { id: 4, question: '4', img: '4'}];
+    this.file.writeFile(this.file.dataDirectory, this.fileName, JSON.stringify(d), {replace: true});
   }
 }

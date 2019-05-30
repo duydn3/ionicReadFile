@@ -14,16 +14,17 @@ import { of } from 'rxjs';
 export class HomePage {
   public images;
   questions$: Observable<IData[]>;
-  public jsonObject: any;
   constructor(public logic: LogicService, private http: HttpClient, private file: File) {
 
-    const d: IData = { id: 3, question: '3', img: '3'};
+    this.logic.saveData('dsfsdf');
     this.file.readAsText(this.file.dataDirectory, 'data.json')
     .then((res) => {
-      this.jsonObject = of(res);
-    });
-    this.jsonObject.subscribe((res) => {
-      this.images = JSON.stringify(res);
+        this.questions$ = JSON.parse(res);
+        this.questions$.subscribe((respo) => {
+          respo.forEach(element => {
+            this.images = element.question;
+          });
+        });
     });
   }
   ionViewWillEnter() {
