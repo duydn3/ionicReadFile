@@ -1,0 +1,7 @@
+{
+  "name": "runGen",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}
